@@ -63,6 +63,17 @@ const App = () => {
           />
         }
       />
+      <Route
+        exact
+        path="/pokemon-page"
+        element={
+          <PokemonPage
+            pokemonList={pokemonList}
+            previous={previous}
+            next={next}
+          />
+        }
+      />
     </Routes>
   );
 };
