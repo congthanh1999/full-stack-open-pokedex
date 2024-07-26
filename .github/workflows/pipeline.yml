@@ -63,10 +63,8 @@ jobs:
 
       - name: Bump version and push tag
         if: ${{ github.event_name == 'push' }}
-        uses: anothrNick/github-tag-action@1.64.0
+        uses: anothrNick/github-tag-action@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          DEFAULT_BUMP: patch  
-          TAG_PREFIX: 'v'
-          PATCH_STRING_TOKEN: '#patch'
+          WITH_V: true
+          DEFAULT_BUMP: patch
