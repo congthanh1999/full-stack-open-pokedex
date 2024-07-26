@@ -64,4 +64,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          default_bump: patch  # Ensure this is lowercase
+          default_bump: patch
+          tag_prefix: 'v'
