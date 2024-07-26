@@ -66,3 +66,4 @@ jobs:
         with:
           default_bump: patch
           tag_prefix: 'v'
+          patch_string_token: '#patch'
