@@ -69,3 +69,4 @@ jobs:
         with:
           DEFAULT_BUMP: patch  
           TAG_PREFIX: 'v'
+          PATCH_STRING_TOKEN: '#patch'
