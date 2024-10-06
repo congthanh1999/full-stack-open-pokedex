@@ -86,7 +86,7 @@ jobs:
         if: ${{ success() }}
         with:
           severity: info
-          details: Test Succeeded!
+          details: A new version of pokedex deployed
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
 
       - name: test fail
@@ -94,5 +94,5 @@ jobs:
         if: failure()
         with:
           severity: error
-          details: Test Failed!
+          details: Build failed
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
