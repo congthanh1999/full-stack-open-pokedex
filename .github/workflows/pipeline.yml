@@ -54,6 +54,29 @@ jobs:
         if: ${{ github.event_name == 'push' && !contains(toJson(github.event.commits.*.message), '#skip')}}
         run: curl https://api.render.com/deploy/srv-${{ secrets.RENDER_SERVICE_ID }}?key=${{ secrets.RENDER_API_KEY }}
 
+      # - name: test success
+      #   uses: rjstone/discord-webhook-notify@v1.0.4
+      #   if: ${{ success() }}
+      #   with:
+      #     severity: info
+      #     details: A new version of pokedex deployed
+      #     webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+
+      # - name: test fail
+      #   uses: rjstone/discord-webhook-notify@v1.0.4
+      #   if: ${{ failure() }}
+      #   with:
+      #     severity: error
+      #     details: Build failed
+      #     webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+      - name: Discord notification
+        uses: Ilshidur/action-discord@0.3.2
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        if: ${{ success() }}
+        with:
+          args: "The project {{ EVENT_PAYLOAD.repository.full_name }} has been deployed."
+
   tag-release:
     needs: [simple_deployment_pipeline]
     runs-on: ubuntu-20.04
